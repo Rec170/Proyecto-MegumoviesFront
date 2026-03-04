@@ -96,7 +96,6 @@ class gestorDeContenido {
 }
 
 // para registrarse (API)
-const API_BASE = (window.API_BASE || "").replace(/\/, "");
 const registroForm = document.getElementById("registroForm");
 
 if (registroForm) {
