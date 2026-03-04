@@ -272,7 +272,7 @@ gestor.agregarContenido("Spider-Man", DESCRIPCIONES["Spider-Man"], "./assets/img
 gestor.agregarContenido("Joker", DESCRIPCIONES["Joker"], "./assets/img/images (1).jpg");
 gestor.agregarContenido("Pepe", DESCRIPCIONES["Pepe"], "./assets/img/famous-memes-as-posters-for-disney-pixar-movies-v0-ip2hni6h3lhc1.jpg");
 gestor.agregarContenido("Kraven", DESCRIPCIONES["Kraven"], "./assets/img/movie-covers-v0-vgewq8iul2de1.webp");
-gestor.agregarContenido("Cine de terror", DESCRIPCIONES["Cine de terror"], "./assets/img/Portada_CINE-DE-TERROR-NIN#U0303OS_JPG-scaled.jpg");
+gestor.agregarContenido("Cine de terror", DESCRIPCIONES["Cine de terror"], "./assets/img/portadacineterror.jpg");
 gestor.agregarContenido("Titanes del pacífico", DESCRIPCIONES["Titanes del pacífico"], "./assets/img/pacific_64v9.jpg");
 gestor.agregarContenido("Planeta de los simios", DESCRIPCIONES["Planeta de los simios"], "./assets/img/unnamed.webp");
 gestor.agregarContenido("Superman", DESCRIPCIONES["Superman"], "./assets/img/44a007cc9480c7e3c02f8b2b4c4978e3.jpg");
