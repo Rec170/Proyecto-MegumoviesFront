@@ -209,6 +209,7 @@ function renderizarCatalogo(listaContenido) {
     });
 }
 
+if (inputBuscador) {
 inputBuscador.addEventListener("input", (e) => {
     const textoUsuario = e.target.value.toLowerCase();
     
@@ -219,6 +220,7 @@ inputBuscador.addEventListener("input", (e) => {
 
     renderizarCatalogo(resultados);
 });
+}
 
 
 function myFunction() {
