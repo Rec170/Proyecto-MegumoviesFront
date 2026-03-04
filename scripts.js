@@ -186,43 +186,6 @@ if (logoutBtn) {
 }
 
 
-////BUSQUEDAAAAAAAA
-const inputBuscador = document.getElementById("buscador");
-
-// Función principal para renderizar el catálog
-function renderizarCatalogo(listaContenido) {
-    contenedor.innerHTML = ""; 
-    
-    if (listaContenido.length === 0) {
-        contenedor.innerHTML = `<p class="no-results">No se encontraron coincidencias</p>`;
-        return;
-    }
-
-    listaContenido.forEach((elemento) => {
-        let tarjeta = document.createElement('img');
-        tarjeta.setAttribute('class', 'card');
-        tarjeta.src = elemento.miniatura;
-        const originalIndex = gestor.contenidos.indexOf(elemento);
-        tarjeta.addEventListener("click", () => mostrarDetalle(originalIndex));
-
-        contenedor.appendChild(tarjeta);
-    });
-}
-
-if (inputBuscador) {
-inputBuscador.addEventListener("input", (e) => {
-    const textoUsuario = e.target.value.toLowerCase();
-    
-    // filtracion por titulo
-    const resultados = gestor.contenidos.filter(pelicula => 
-        pelicula.titulo.toLowerCase().includes(textoUsuario)
-    );
-
-    renderizarCatalogo(resultados);
-});
-}
-
-
 function myFunction() {
     window.location.href = "metodospagos.html";
 }
