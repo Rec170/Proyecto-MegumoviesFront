@@ -35,47 +35,7 @@
     <h2 class="titulo-seccion">Mi lista de favoritos</h2>
     <div id="contenedor-favoritos" class="catalogo-grid"></div>
   </main>
-
   <script src="config.js"></script>
-<script src="scripts.js"></script>
-<script>
-    function cargarFavoritos() {
-        const contenedorFavs = document.getElementById("contenedor-favoritos");
-        
-        let favoritos = JSON.parse(localStorage.getItem(keyFavoritos)) || [];
-        
-        contenedorFavs.innerHTML = "";
-        
-        if (favoritos.length === 0) {
-            contenedorFavs.innerHTML = "<p style='color:white;'>Tu lista está vacía</p>";
-            return;
-        }
-
-        favoritos.forEach((peli) => {
-            let card = document.createElement('div');
-            card.className = 'card-container';
-            card.innerHTML = `
-                <img src="${peli.miniatura}" class="card">
-                <span class="btn-favorito active" style="color:red; cursor:pointer;">✕</span>
-            `;
-
-            card.querySelector('.btn-favorito').onclick = () => {
-                eliminarDeFavs(peli.titulo);
-            };
-
-            contenedorFavs.appendChild(card);
-        });
-    }
-
-    function eliminarDeFavs(titulo) {
-        let favoritos = JSON.parse(localStorage.getItem(keyFavoritos)) || [];
-        const nuevaLista = favoritos.filter(peli => peli.titulo !== titulo);
-        localStorage.setItem(keyFavoritos, JSON.stringify(nuevaLista));
-        cargarFavoritos();
-    }
-    window.onload = cargarFavoritos;
-</script>
-</body>
-</html>
+  <script src="scripts.js"></script>
 </body>
 </html>

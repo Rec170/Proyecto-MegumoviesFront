@@ -262,108 +262,225 @@ function cerrarDetalle(){
     document.body.style.overflow = "";
 }
 
-//Codigo de la página
-const overlay = document.getElementById("detalle-overlay")
+
+// ===============================
+// Página actual / referencias comunes
+// ===============================
+const overlay = document.getElementById("detalle-overlay");
+
+// contenedores (según la página)
+const contenedorCatalogo = document.getElementById("contenedor-catalogo");
+const contenedorFavoritos = document.getElementById("contenedor-favoritos");
+
+// buscador (si existe en la página)
+const inputBuscador = document.getElementById("buscador");
+const btnBuscar = document.getElementById("btn-buscar");
+
+// ===============================
+// Catálogo (Películas) - datos locales con descripciones
+// ===============================
 const gestor = new gestorDeContenido();
-let contenedor2 = document.getElementById("contenedor-catalogo");
 
-const lorem = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam mollitia doloremque molestias saepe temporibus, autem ipsa impedit natus dolorem. Minus expedita assumenda deleniti ea aliquid laudantium quas porro voluptas earum?";
-gestor.agregarContenido("ej1",lorem,"./assets/img/poster-matrix.jpg");
-gestor.agregarContenido("ej2",lorem,"./assets/img/tumblr_inline_nsx1hym5881t35chj_1280.jpg");
-gestor.agregarContenido("ej3",lorem,"./assets/img/81az0oR6izL._AC_UF894,1000_QL80_.jpg");
-gestor.agregarContenido("ej4",lorem,"./assets/img/primer-poster-de-la-pelicula-de-marvel-thor-el-mundo-oscuro-original.jpg");
-gestor.agregarContenido("ej5",lorem,"./assets/img/the-amazing-spider-man-2012-movie-posters-v0-t70eiq3n4a691.webp");
-gestor.agregarContenido("ej6",lorem,"./assets/img/images (1).jpg");
-gestor.agregarContenido("ej7",lorem,"./assets/img/famous-memes-as-posters-for-disney-pixar-movies-v0-ip2hni6h3lhc1.jpg");
-gestor.agregarContenido("ej8",lorem,"./assets/img/movie-covers-v0-vgewq8iul2de1.webp");
-gestor.agregarContenido("ej9",lorem,"./assets/img/Portada_CINE-DE-TERROR-NIÑOS_JPG-scaled.jpg");
-gestor.agregarContenido("ej10",lorem,"./assets/img/pacific_64v9.jpg");
-gestor.agregarContenido("ej11",lorem,"./assets/img/unnamed.webp");
-gestor.agregarContenido("ej12",lorem,"./assets/img/44a007cc9480c7e3c02f8b2b4c4978e3.jpg");
-gestor.agregarContenido("ej13",lorem,"./assets/img/P_Iron_Man_2_5.webp"); 
-gestor.agregarContenido("ej14",lorem,"./assets/img/images.jpg");
-gestor.agregarContenido("ej15",lorem,"./assets/img/P_shrek_13.jpg");
+// Descripciones cortas para que se vean bien en el detalle
+const DESCRIPCIONES = {
+  "ej1": "Un hacker descubre que la realidad es una simulación y se une a una rebelión contra las máquinas.",
+  "ej2": "Un thriller oscuro lleno de giros, secretos y decisiones que lo cambian todo.",
+  "ej3": "Acción intensa con un héroe improbable enfrentando un reto imposible.",
+  "ej4": "Fantasía y épica: un héroe debe salvar su mundo antes de que sea demasiado tarde.",
+  "ej5": "Un joven con poderes inesperados debe elegir entre la vida normal y la responsabilidad.",
+  "ej6": "Misterio y tensión: nada es lo que parece, y cada pista abre más preguntas.",
+  "ej7": "Aventura familiar con humor y corazón, perfecta para ver en maratón.",
+  "ej8": "Drama con toques de comedia: amistades, caos y segundas oportunidades.",
+  "ej9": "Terror clásico con atmósfera pesada y sustos bien puestos.",
+  "ej10": "Kaijus y mechas: batallas gigantes para salvar a la humanidad.",
+  "ej11": "Historia emotiva sobre crecer, perder y volver a intentarlo.",
+  "ej12": "Acción y conspiración: un secreto enterrado sale a la luz.",
+  "ej13": "Superhéroes, tecnología y ego: el precio de ser el más brillante.",
+  "ej14": "Una aventura rápida con persecuciones, humor y un final sorpresa.",
+  "ej15": "Un ogro, un burro y un viaje que termina cambiando todo su destino."
+};
 
-//favoritossssssss
-const contenedor = document.getElementById('contenedor-catalogo');
-const Buscador = document.getElementById('buscador');
-const btnBuscar = document.getElementById('btn-buscar');
+// Posters locales (ya existentes en assets)
+gestor.agregarContenido("ej1", DESCRIPCIONES["ej1"], "./assets/img/poster-matrix.jpg");
+gestor.agregarContenido("ej2", DESCRIPCIONES["ej2"], "./assets/img/tumblr_inline_nsx1hym5881t35chj_1280.jpg");
+gestor.agregarContenido("ej3", DESCRIPCIONES["ej3"], "./assets/img/81az0oR6izL._AC_UF894,1000_QL80_.jpg");
+gestor.agregarContenido("ej4", DESCRIPCIONES["ej4"], "./assets/img/primer-poster-de-la-pelicula-de-marvel-thor-el-mundo-oscuro-original.jpg");
+gestor.agregarContenido("ej5", DESCRIPCIONES["ej5"], "./assets/img/the-amazing-spider-man-2012-movie-posters-v0-t70eiq3n4a691.webp");
+gestor.agregarContenido("ej6", DESCRIPCIONES["ej6"], "./assets/img/images (1).jpg");
+gestor.agregarContenido("ej7", DESCRIPCIONES["ej7"], "./assets/img/famous-memes-as-posters-for-disney-pixar-movies-v0-ip2hni6h3lhc1.jpg");
+gestor.agregarContenido("ej8", DESCRIPCIONES["ej8"], "./assets/img/movie-covers-v0-vgewq8iul2de1.webp");
+gestor.agregarContenido("ej9", DESCRIPCIONES["ej9"], "./assets/img/Portada_CINE-DE-TERROR-NIÑOS_JPG-scaled.jpg");
+gestor.agregarContenido("ej10", DESCRIPCIONES["ej10"], "./assets/img/pacific_64v9.jpg");
+gestor.agregarContenido("ej11", DESCRIPCIONES["ej11"], "./assets/img/unnamed.webp");
+gestor.agregarContenido("ej12", DESCRIPCIONES["ej12"], "./assets/img/44a007cc9480c7e3c02f8b2b4c4978e3.jpg");
+gestor.agregarContenido("ej13", DESCRIPCIONES["ej13"], "./assets/img/P_Iron_Man_2_5.webp");
+gestor.agregarContenido("ej14", DESCRIPCIONES["ej14"], "./assets/img/images.jpg");
+gestor.agregarContenido("ej15", DESCRIPCIONES["ej15"], "./assets/img/P_shrek_13.jpg");
 
-
+// ===============================
+// Favoritos (localStorage)
+// ===============================
 const usuarioActual = localStorage.getItem("usuarioActivo") || "invitado";
 const keyFavoritos = `favoritos_${usuarioActual}`;
 
-if (contenedor) {
-    mostrarPeliculas(gestor.contenidos);
+function getPoster(item) {
+  // películas usan miniatura; series viejas usan img
+  if (item.miniatura) return item.miniatura;
+  if (item.img) return `./assets/img/${item.img}`;
+  if (item.imagen) return item.imagen;
+  if (item.posterUrl) return item.posterUrl;
+  return "";
 }
 
+function normalizarFavorito(item) {
+  // asegura formato común
+  return {
+    titulo: item.titulo || "",
+    descripcion: item.descripcion || "",
+    miniatura: item.miniatura || (item.img ? `./assets/img/${item.img}` : ""),
+    tipo: item.tipo || (item.img ? "serie" : "pelicula")
+  };
+}
 
-// crea las tarjetas con imagen + corazón
-function mostrarPeliculas(lista) {
-    contenedor.innerHTML = "";
+function leerFavoritos() {
+  try {
+    const raw = JSON.parse(localStorage.getItem(keyFavoritos)) || [];
+    return raw.map(normalizarFavorito).filter(x => x.titulo);
+  } catch {
+    return [];
+  }
+}
 
-    lista.forEach((elemento, index) => {
-        let contenedorTarjeta = document.createElement('div');
-        contenedorTarjeta.classList.add('card-container');
+function guardarFavoritos(lista) {
+  localStorage.setItem(keyFavoritos, JSON.stringify(lista));
+}
 
-        let tarjeta = document.createElement('img');
-        tarjeta.className = 'card';
-        tarjeta.src = elemento.miniatura;
-        
-        tarjeta.addEventListener("click", () => {
-            mostrarDetalle(index);
-        });
+function toggleFavorito(item) {
+  const fav = normalizarFavorito(item);
+  let favoritos = leerFavoritos();
+  const idx = favoritos.findIndex(f => f.titulo === fav.titulo);
+  if (idx === -1) favoritos.push(fav);
+  else favoritos.splice(idx, 1);
+  guardarFavoritos(favoritos);
 
-        // crea el corazon
-        let iconoFav = document.createElement('span');
-        iconoFav.innerHTML = '❤';
-        iconoFav.classList.add('btn-favorito');
-        
-        let favoritos = JSON.parse(localStorage.getItem(keyFavoritos)) || [];
-        if (favoritos.some(fav => fav.titulo === elemento.titulo)) {
-            iconoFav.classList.add('active');
-        }
+  // si estamos en la página de favoritos, refresca
+  if (contenedorFavoritos) renderFavoritos();
+}
 
-        iconoFav.addEventListener("click", (e) => {
-            e.stopPropagation(); // 
-            toggleFavorito(elemento);
-            iconoFav.classList.toggle('active');
-        });
+function esFavorito(titulo) {
+  const favoritos = leerFavoritos();
+  return favoritos.some(f => f.titulo === titulo);
+}
 
-        contenedorTarjeta.appendChild(tarjeta);
-        contenedorTarjeta.appendChild(iconoFav);
-        contenedor.appendChild(contenedorTarjeta);
+// ===============================
+// Render de catálogo (paginaprincipal)
+// ===============================
+function renderCatalogo(lista) {
+  if (!contenedorCatalogo) return;
+  contenedorCatalogo.innerHTML = "";
+
+  lista.forEach((elemento, index) => {
+    const contenedorTarjeta = document.createElement("div");
+    contenedorTarjeta.classList.add("card-container");
+
+    const img = document.createElement("img");
+    img.className = "card";
+    img.src = getPoster(elemento);
+    img.alt = elemento.titulo;
+
+    img.addEventListener("click", () => {
+      mostrarDetalle(index);
     });
+
+    const iconoFav = document.createElement("span");
+    iconoFav.innerHTML = "❤";
+    iconoFav.classList.add("btn-favorito");
+    if (esFavorito(elemento.titulo)) iconoFav.classList.add("active");
+
+    iconoFav.addEventListener("click", (e) => {
+      e.stopPropagation();
+      toggleFavorito(elemento);
+      iconoFav.classList.toggle("active");
+    });
+
+    contenedorTarjeta.appendChild(img);
+    contenedorTarjeta.appendChild(iconoFav);
+    contenedorCatalogo.appendChild(contenedorTarjeta);
+  });
 }
 
-function filtrarPeliculas() {
-    const texto = inputBuscador.value.toLowerCase();
-    
-    const filtrados = gestor.contenidos.filter(pelicula => 
-        pelicula.titulo.toLowerCase().includes(texto)
-    );
-
-    mostrarPeliculas(filtrados);
+function filtrarCatalogo() {
+  if (!contenedorCatalogo || !inputBuscador) return;
+  const texto = (inputBuscador.value || "").toLowerCase();
+  const filtrados = gestor.contenidos.filter(p =>
+    (p.titulo || "").toLowerCase().includes(texto)
+  );
+  renderCatalogo(filtrados);
 }
 
+// inicializa catálogo solo en páginas que lo tengan
+if (contenedorCatalogo) {
+  renderCatalogo(gestor.contenidos);
 
-inputBuscador.addEventListener('input', filtrarPeliculas);
+  if (inputBuscador) inputBuscador.addEventListener("input", filtrarCatalogo);
+  if (btnBuscar) btnBuscar.addEventListener("click", filtrarCatalogo);
+}
 
-//  click en la lupa
-btnBuscar.addEventListener('click', filtrarPeliculas);
+// ===============================
+// Render de favoritos (favoritos.html)
+// ===============================
+function renderFavoritos() {
+  if (!contenedorFavoritos) return;
 
-mostrarPeliculas(gestor.contenidos);
+  const favoritos = leerFavoritos();
+  contenedorFavoritos.innerHTML = "";
 
-function toggleFavorito(pelicula) {
-    // lee la lista específica del usuario
-    let favoritos = JSON.parse(localStorage.getItem(keyFavoritos)) || [];
-    const index = favoritos.findIndex(fav => fav.titulo === pelicula.titulo);
+  if (!favoritos.length) {
+    const p = document.createElement("p");
+    p.textContent = "Aún no tienes favoritos. Agrega algunos desde Películas o Series ❤️";
+    contenedorFavoritos.appendChild(p);
+    return;
+  }
 
-    if (index === -1) {
-        favoritos.push(pelicula);
-    } else {
-        favoritos.splice(index, 1);
-    }
-    
-    localStorage.setItem(keyFavoritos, JSON.stringify(favoritos));
+  favoritos.forEach((item) => {
+    const card = document.createElement("div");
+    card.classList.add("card-container");
+
+    const img = document.createElement("img");
+    img.className = "card";
+    img.src = getPoster(item);
+    img.alt = item.titulo;
+
+    // opcional: clic abre detalle "simple" si hay descripción
+    img.addEventListener("click", () => {
+      if (!overlay) return;
+      overlay.innerHTML = `
+        <div class="detalle">
+          <button class="cerrar">✕</button>
+          <h2>${item.titulo}</h2>
+          ${item.descripcion ? `<p>${item.descripcion}</p>` : ""}
+        </div>
+      `;
+      overlay.classList.add("activo");
+      document.body.style.overflow = "hidden";
+      overlay.querySelector(".cerrar").onclick = cerrarDetalle;
+    });
+
+    const iconoFav = document.createElement("span");
+    iconoFav.innerHTML = "❤";
+    iconoFav.classList.add("btn-favorito", "active");
+
+    iconoFav.addEventListener("click", (e) => {
+      e.stopPropagation();
+      toggleFavorito(item);
+    });
+
+    card.appendChild(img);
+    card.appendChild(iconoFav);
+    contenedorFavoritos.appendChild(card);
+  });
+}
+
+if (contenedorFavoritos) {
+  renderFavoritos();
 }

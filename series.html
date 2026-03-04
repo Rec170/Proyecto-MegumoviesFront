@@ -50,15 +50,15 @@ const lorem = "Descripción de prueba para la serie.";
 // Datos de series
 // ===============================
 const series = [
-    { titulo: "The Walking Dead", img: "S_The_walking_dead_2.jpg" },
-    { titulo: "The Boys", img: "S_the-boys-homelander-C24.jpg" },
-    { titulo: "Breaking Bad", img: "s_BreakingBad_c24.jpg" },
-    { titulo: "Lost", img: "S_Lost_c12.jpg" },
-    { titulo: "Loki", img: "S_loki_c12.jpg" },
-    { titulo: "Invasion", img: "S_Invacion_c12.jpg" },
-    { titulo: "Bienvenidos a Derry", img: "S_Bienvenidos-A-Derry_c12.webp" },
-    { titulo: "Batman", img: "S_Luter_c12.jpg" },
-    { titulo: "Peaky Blinders", img: "P_PeakyBlinders-1.webp" }
+    { titulo: "The Walking Dead", img: "S_The_walking_dead_2.jpg", descripcion: "Un grupo de supervivientes lucha por vivir en un mundo invadido por zombis y amenazas humanas." },
+    { titulo: "The Boys", img: "S_the-boys-homelander-C24.jpg", descripcion: "Superhéroes corruptos y una banda dispuesta a exponerlos cueste lo que cueste." },
+    { titulo: "Breaking Bad", img: "s_BreakingBad_c24.jpg", descripcion: "Un profesor de química se transforma en un capo para asegurar el futuro de su familia." },
+    { titulo: "Lost", img: "S_Lost_c12.jpg", descripcion: "Sobrevivientes de un accidente aéreo enfrentan misterios en una isla llena de secretos." },
+    { titulo: "Loki", img: "S_loki_c12.jpg", descripcion: "El dios del engaño viaja por el multiverso causando caos y enfrentando su destino." },
+    { titulo: "Invasion", img: "S_Invacion_c12.jpg", descripcion: "Una invasión alienígena vista desde distintas partes del mundo y personas comunes." },
+    { titulo: "Bienvenidos a Derry", img: "S_Bienvenidos-A-Derry_c12.webp", descripcion: "Una historia imperdible para maratonear." },
+    { titulo: "Batman", img: "S_Luter_c12.jpg", descripcion: "Una historia imperdible para maratonear." },
+    { titulo: "Peaky Blinders", img: "P_PeakyBlinders-1.webp", descripcion: "Una familia criminal en Birmingham sube al poder entre violencia y estrategia." }
 ];
 
 // ===============================
@@ -92,7 +92,7 @@ const keyFavoritos = `favoritos_${usuarioActual}`;
 function toggleFavorito(serie, icono) {
     let favoritos = JSON.parse(localStorage.getItem(keyFavoritos)) || [];
     const index = favoritos.findIndex(f => f.titulo === serie.titulo);
-    if (index === -1) favoritos.push(serie);
+    if (index === -1) favoritos.push({ titulo: serie.titulo, descripcion: serie.descripcion || "", miniatura: "./assets/img/" + serie.img, tipo: "serie" });
     else favoritos.splice(index, 1);
     localStorage.setItem(keyFavoritos, JSON.stringify(favoritos));
     icono.classList.toggle("active");
