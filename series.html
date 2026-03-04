@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Megumovies</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <header class="header">
+<nav class="nav">
+  <div class="left-cont">
+    <img src="assets/img/meowgumi.png" class="logo" alt="Megumovies">
+  </div>
+  
+  <ul class="main-nav">
+    <li class="nav-item active"><a href="paginaprincipal.html">Inicio</a></li>
+    <li class="nav-item"><a href="series.html">Series</a></li>
+    <li class="nav-item"><a href="favoritos.html">Mi Lista</a></li>
+    
+  </ul>
+
+    <div class="right-cont">
+    <div class="search-container">
+        <input type="text" id="buscador" placeholder="Buscar">
+        <button id="btn-buscar">🔍</button>
+    </div>
+    <button class="logout-btn">Cerrar sesión</button>
+
+</div>  
+</nav>
+  </header>
+  <main id="contenedor-principal">
+    <h2 class="titulo-seccion">Lo mas reciente</h2>
+    <div id="contenedor-catalogo"></div>
+  </main>
+  <div id="detalle-overlay" class="overlay"></div>
+<script>
+// ===============================
+// Referencias
+// ===============================
+const overlay = document.getElementById("detalle-overlay");
+const contenedor = document.getElementById("contenedor-catalogo");
+const inputBuscador = document.getElementById("buscador");
+const btnBuscar = document.getElementById("btn-buscar");
+const lorem = "Descripción de prueba para la serie.";
+
+// ===============================
+// Datos de series
+// ===============================
+const series = [
+    { titulo: "The Walking Dead", img: "S_The_walking_dead_2.jpg" },
+    { titulo: "The Boys", img: "S_the-boys-homelander-C24.jpg" },
+    { titulo: "Breaking Bad", img: "s_BreakingBad_c24.jpg" },
+    { titulo: "Lost", img: "S_Lost_c12.jpg" },
+    { titulo: "Loki", img: "S_loki_c12.jpg" },
+    { titulo: "Invasion", img: "S_Invacion_c12.jpg" },
+    { titulo: "Bienvenidos a Derry", img: "S_Bienvenidos-A-Derry_c12.webp" },
+    { titulo: "Batman", img: "S_Luter_c12.jpg" },
+    { titulo: "Peaky Blinders", img: "P_PeakyBlinders-1.webp" }
+];
+
+// ===============================
+// Overlay
+// ===============================
+function mostrarDetalle(serie) {
+    overlay.innerHTML = `
+        <div class="detalle-contenido">
+            <button class="cerrar">X</button>
+            <img src="assets/img/${serie.img}" class="detalle-img">
+            <h1>${serie.titulo}</h1>
+            <p>${lorem}</p>
+        </div>
+    `;
+    overlay.classList.add("activo");
+    document.body.style.overflow = "hidden";
+    overlay.querySelector(".cerrar").onclick = cerrarDetalle;
+}
+
+function cerrarDetalle() {
+    overlay.classList.remove("activo");
+    document.body.style.overflow = "";
+}
+
+// ===============================
+// Favoritos
+// ===============================
+const usuarioActual = localStorage.getItem("usuarioActivo") || "invitado";
+const keyFavoritos = `favoritos_${usuarioActual}`;
+
+function toggleFavorito(serie, icono) {
+    let favoritos = JSON.parse(localStorage.getItem(keyFavoritos)) || [];
+    const index = favoritos.findIndex(f => f.titulo === serie.titulo);
+    if (index === -1) favoritos.push(serie);
+    else favoritos.splice(index, 1);
+    localStorage.setItem(keyFavoritos, JSON.stringify(favoritos));
+    icono.classList.toggle("active");
+}
+
+// ===============================
+// Renderizar series
+// ===============================
+function mostrarSeries(lista) {
+    contenedor.innerHTML = "";
+    lista.forEach(serie => {
+        const card = document.createElement("div");
+        card.classList.add("card");
+
+        const img = document.createElement("img");
+        img.src = `assets/img/${serie.img}`;
+        img.width = 200;
+        img.addEventListener("click", () => mostrarDetalle(serie));
+
+        const titulo = document.createElement("h3");
+        titulo.textContent = serie.titulo;
+
+        // Icono favorito
+        const iconoFav = document.createElement("span");
+        iconoFav.innerHTML = "❤";
+        iconoFav.classList.add("btn-favorito");
+        const favoritos = JSON.parse(localStorage.getItem(keyFavoritos)) || [];
+        if (favoritos.some(f => f.titulo === serie.titulo)) iconoFav.classList.add("active");
+        iconoFav.addEventListener("click", e => {
+            e.stopPropagation();
+            toggleFavorito(serie, iconoFav);
+        });
+
+        card.appendChild(img);
+        card.appendChild(titulo);
+        card.appendChild(iconoFav);
+        contenedor.appendChild(card);
+    });
+}
+
+// ===============================
+// Buscador
+// ===============================
+function filtrarSeries() {
+    const texto = inputBuscador.value.toLowerCase();
+    const filtrados = series.filter(s => s.titulo.toLowerCase().includes(texto));
+    mostrarSeries(filtrados);
+}
+
+inputBuscador.addEventListener("input", filtrarSeries);
+btnBuscar.addEventListener("click", filtrarSeries);
+
+// ===============================
+// Inicializar
+// ===============================
+mostrarSeries(series);
+</script>

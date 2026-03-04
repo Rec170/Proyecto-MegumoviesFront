@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Inicio de sesion</title>
+</head>
+<body>
+
+<header class="header">
+    <nav class="nav">
+        <div class="left-cont">
+            <img src="assets/img/meowgumi.png" class="logo" alt="Megumovies">
+        </div>
+        <div>
+            <a href="registro.html">Crear cuenta</a>
+        </div>
+    </nav>
+</header>
+
+<div class="contenedorIDX">
+
+    <h4>Rellene los campos para iniciar sesión</h4>
+
+    <form id="loginForm">
+
+        <label class="label">Correo electrónico:</label>
+        <input type="text" placeholder="Ingresa correo electrónico" class="correo" required>
+
+        <label class="label">Contraseña:</label>
+        <input type="password" placeholder="Ingresa contraseña" class="password" required>
+
+        <button type="submit" class="login-btn">Login</button>
+
+    </form>
+
+    <p class="login-link">
+        <a href="registro.html">¿No tienes una cuenta? Regístrate</a>
+    </p>
+
+</div>
+
+<script src="config.js"></script>
+<script src="scripts.js"></script>
+
+</body>
+</html>
