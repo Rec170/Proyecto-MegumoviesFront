@@ -1,3 +1,7 @@
+// API helper
+const API_BASE = (window.API_BASE || "").replace(/\/+$/, "");
+const apiUrl = (path) => API_BASE ? `${API_BASE}${path.startsWith("/") ? "" : "/"}${path}` : path;
+
 const btnPagar = document.getElementById("btnPagar");
 
 // Protect internal pages
@@ -104,7 +108,7 @@ if (registroForm) {
         const password = document.querySelector(".password").value;
 
         try {
-            const res = await fetch(`/auth/register`, {
+            const res = await fetch(apiUrl(`/auth/register`), {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email, name, password })
@@ -141,7 +145,7 @@ if (loginForm) {
         const password = document.querySelector(".password").value;
 
         try {
-            const res = await fetch(`/auth/login`, {
+            const res = await fetch(apiUrl(`/auth/login`), {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email, password })

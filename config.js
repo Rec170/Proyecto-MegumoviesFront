@@ -1,2 +1,2 @@
-// Cambia esta URL cuando tengas tu backend en Render
+// API base (Render)
 window.API_BASE = "https://proyecto-megumoviesbackend.onrender.com";
