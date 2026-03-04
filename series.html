@@ -146,6 +146,20 @@ inputBuscador.addEventListener("input", filtrarSeries);
 btnBuscar.addEventListener("click", filtrarSeries);
 
 // ===============================
+// Logout
+// ===============================
+const logoutBtn = document.querySelector(".logout-btn");
+if (logoutBtn) {
+  logoutBtn.addEventListener("click", () => {
+    // borra sesión (ajusta las keys si usas otras)
+    localStorage.removeItem("token");
+    localStorage.removeItem("usuarioActivo");
+    localStorage.removeItem("usuario");
+    window.location.href = "index.html";
+  });
+}
+
+// ===============================
 // Inicializar
 // ===============================
 mostrarSeries(series);
