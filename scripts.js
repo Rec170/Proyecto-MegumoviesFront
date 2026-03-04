@@ -246,39 +246,39 @@ const gestor = new gestorDeContenido();
 
 // Descripciones cortas para que se vean bien en el detalle
 const DESCRIPCIONES = {
-  "ej1": "Un hacker descubre que la realidad es una simulación y se une a una rebelión contra las máquinas.",
-  "ej2": "Un thriller oscuro lleno de giros, secretos y decisiones que lo cambian todo.",
-  "ej3": "Acción intensa con un héroe improbable enfrentando un reto imposible.",
-  "ej4": "Fantasía y épica: un héroe debe salvar su mundo antes de que sea demasiado tarde.",
-  "ej5": "Un joven con poderes inesperados debe elegir entre la vida normal y la responsabilidad.",
-  "ej6": "Misterio y tensión: nada es lo que parece, y cada pista abre más preguntas.",
-  "ej7": "Aventura familiar con humor y corazón, perfecta para ver en maratón.",
-  "ej8": "Drama con toques de comedia: amistades, caos y segundas oportunidades.",
-  "ej9": "Terror clásico con atmósfera pesada y sustos bien puestos.",
-  "ej10": "Kaijus y mechas: batallas gigantes para salvar a la humanidad.",
-  "ej11": "Historia emotiva sobre crecer, perder y volver a intentarlo.",
-  "ej12": "Acción y conspiración: un secreto enterrado sale a la luz.",
-  "ej13": "Superhéroes, tecnología y ego: el precio de ser el más brillante.",
-  "ej14": "Una aventura rápida con persecuciones, humor y un final sorpresa.",
-  "ej15": "Un ogro, un burro y un viaje que termina cambiando todo su destino."
+    "Matrix": "Un hacker descubre que la realidad es una simulación y se une a una rebelión contra las máquinas.",
+    "Malefica": "Un thriller oscuro lleno de giros, secretos y decisiones que lo cambian todo.",
+    "Batman": "Acción intensa con un héroe improbable enfrentando un reto imposible.",
+    "Thor": "Fantasía y épica: un héroe debe salvar su mundo antes de que sea demasiado tarde.",
+    "Spider-Man": "Un joven con poderes inesperados debe elegir entre la vida normal y la responsabilidad.",
+    "Joker": "Misterio y tensión: nada es lo que parece, y cada pista abre más preguntas.",
+    "Pepe": "Aventura familiar con humor y corazón, perfecta para ver en maratón.",
+    "Kraven": "Drama con toques de comedia: amistades, caos y segundas oportunidades.",
+    "Cine de terror": "Terror clásico con atmósfera pesada y sustos bien puestos.",
+    "Titanes del pacífico": "Kaijus y mechas: batallas gigantes para salvar a la humanidad.",
+    "Planeta de los simios": "Historia emotiva sobre crecer, perder y volver a intentarlo.",
+    "Superman": "Acción y conspiración: un secreto enterrado sale a la luz.",
+    "Iron-Man": "Superhéroes, tecnología y ego: el precio de ser el más brillante.",
+    "Meme": "Una aventura rápida con persecuciones, humor y un final sorpresa.",
+    "Shrek": "Un ogro, un burro y un viaje que termina cambiando todo su destino."
 };
 
 // Posters locales (ya existentes en assets)
-gestor.agregarContenido("ej1", DESCRIPCIONES["ej1"], "./assets/img/poster-matrix.jpg");
-gestor.agregarContenido("ej2", DESCRIPCIONES["ej2"], "./assets/img/tumblr_inline_nsx1hym5881t35chj_1280.jpg");
-gestor.agregarContenido("ej3", DESCRIPCIONES["ej3"], "./assets/img/81az0oR6izL._AC_UF894,1000_QL80_.jpg");
-gestor.agregarContenido("ej4", DESCRIPCIONES["ej4"], "./assets/img/primer-poster-de-la-pelicula-de-marvel-thor-el-mundo-oscuro-original.jpg");
-gestor.agregarContenido("ej5", DESCRIPCIONES["ej5"], "./assets/img/the-amazing-spider-man-2012-movie-posters-v0-t70eiq3n4a691.webp");
-gestor.agregarContenido("ej6", DESCRIPCIONES["ej6"], "./assets/img/images (1).jpg");
-gestor.agregarContenido("ej7", DESCRIPCIONES["ej7"], "./assets/img/famous-memes-as-posters-for-disney-pixar-movies-v0-ip2hni6h3lhc1.jpg");
-gestor.agregarContenido("ej8", DESCRIPCIONES["ej8"], "./assets/img/movie-covers-v0-vgewq8iul2de1.webp");
-gestor.agregarContenido("ej9", DESCRIPCIONES["ej9"], "./assets/img/Portada_CINE-DE-TERROR-NIÑOS_JPG-scaled.jpg");
-gestor.agregarContenido("ej10", DESCRIPCIONES["ej10"], "./assets/img/pacific_64v9.jpg");
-gestor.agregarContenido("ej11", DESCRIPCIONES["ej11"], "./assets/img/unnamed.webp");
-gestor.agregarContenido("ej12", DESCRIPCIONES["ej12"], "./assets/img/44a007cc9480c7e3c02f8b2b4c4978e3.jpg");
-gestor.agregarContenido("ej13", DESCRIPCIONES["ej13"], "./assets/img/P_Iron_Man_2_5.webp");
-gestor.agregarContenido("ej14", DESCRIPCIONES["ej14"], "./assets/img/images.jpg");
-gestor.agregarContenido("ej15", DESCRIPCIONES["ej15"], "./assets/img/P_shrek_13.jpg");
+gestor.agregarContenido("Matrix", DESCRIPCIONES["Matrix"], "./assets/img/poster-matrix.jpg");
+gestor.agregarContenido("Malefica", DESCRIPCIONES["Malefica"], "./assets/img/tumblr_inline_nsx1hym5881t35chj_1280.jpg");
+gestor.agregarContenido("Batman", DESCRIPCIONES["Batman"], "./assets/img/81az0oR6izL._AC_UF894,1000_QL80_.jpg");
+gestor.agregarContenido("Thor", DESCRIPCIONES["Thor"], "./assets/img/primer-poster-de-la-pelicula-de-marvel-thor-el-mundo-oscuro-original.jpg");
+gestor.agregarContenido("Spider-Man", DESCRIPCIONES["Spider-Man"], "./assets/img/the-amazing-spider-man-2012-movie-posters-v0-t70eiq3n4a691.webp");
+gestor.agregarContenido("Joker", DESCRIPCIONES["Joker"], "./assets/img/images (1).jpg");
+gestor.agregarContenido("Pepe", DESCRIPCIONES["Pepe"], "./assets/img/famous-memes-as-posters-for-disney-pixar-movies-v0-ip2hni6h3lhc1.jpg");
+gestor.agregarContenido("Kraven", DESCRIPCIONES["Kraven"], "./assets/img/movie-covers-v0-vgewq8iul2de1.webp");
+gestor.agregarContenido("Cine de terror", DESCRIPCIONES["Cine de terror"], "./assets/img/Portada_CINE-DE-TERROR-NIN#U0303OS_JPG-scaled.jpg");
+gestor.agregarContenido("Titanes del pacífico", DESCRIPCIONES["Titanes del pacífico"], "./assets/img/pacific_64v9.jpg");
+gestor.agregarContenido("Planeta de los simios", DESCRIPCIONES["Planeta de los simios"], "./assets/img/unnamed.webp");
+gestor.agregarContenido("Superman", DESCRIPCIONES["Superman"], "./assets/img/44a007cc9480c7e3c02f8b2b4c4978e3.jpg");
+gestor.agregarContenido("Iron-Man", DESCRIPCIONES["Iron-Man"], "./assets/img/P_Iron_Man_2_5.webp");
+gestor.agregarContenido("Meme", DESCRIPCIONES["Meme"], "./assets/img/images.jpg");
+gestor.agregarContenido("Shrek", DESCRIPCIONES["Shrek"], "./assets/img/P_shrek_13.jpg");
 
 // ===============================
 // Favoritos (localStorage)
